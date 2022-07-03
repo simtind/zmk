@@ -5,7 +5,9 @@ set(CONFIG_APPLICATION_DEFINED_SYSCALL true)
 # Add our custom Zephyr module for drivers w/ syscalls, etc.
 list(APPEND DTS_ROOT ${CMAKE_SOURCE_DIR}/drivers/zephyr)
 
-set(ZephyrBuildConfiguration_ROOT ${CMAKE_SOURCE_DIR}/cmake)
+if (NOT DEFINED ZephyrBuildConfiguration_ROOT)
+    set(ZephyrBuildConfiguration_ROOT ${CMAKE_SOURCE_DIR}/cmake)
+endif()
 
 list(APPEND ZEPHYR_EXTRA_MODULES
   ${CMAKE_CURRENT_SOURCE_DIR}/drivers
